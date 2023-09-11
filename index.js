@@ -26,7 +26,7 @@ function handleFileContent(content) {
 function handleFileUpload(file) {
     file.text().then(handleFileContent).catch(alert).then((svgDoc) => {
       const svgFrame = document.getElementById("svg-target");
-      svgFrame.appendChild(svgDoc.activeElement);
+      svgFrame.appendChild(svgDoc.querySelector("svg"));
 
       const details = document.getElementById("node-listing-details");
       details.classList.remove("hidden");
