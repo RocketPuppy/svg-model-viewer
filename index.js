@@ -97,6 +97,7 @@ function ui() {
 
     nodeListing.replaceChildren();
     const xpathResult = document.evaluate(nodeQuery, svg, nsResolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+    const nodeMap = [];
     for (let i = 0; i < xpathResult.snapshotLength; i++) {
       const node = xpathResult.snapshotItem(i);
       const title = document.evaluate(titleQuery, node, nsResolver, XPathResult.STRING_TYPE, null);
@@ -111,7 +112,10 @@ function ui() {
         scrollIntoView(n);
       });
       li.appendChild(button);
-      nodeListing.appendChild(li);
+      nodeMap.push([title.stringValue, li])
     }
+    nodeMap.sort((a, b) => a > b ? 1 : a < b ? -1 : 0).forEach((n) => {
+      nodeListing.appendChild(n[1]);
+    });
   });
 }
