@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="module" defer src="index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>SVG Model Viewer</h1>
+    <p>
+      Select your SVG file to view and then set your node and title XPath query expressions.
+      The node expression should be written from the root context.
+      The title expression should be written from the node context.
+    </p>
+    <div class='inputs-form'>
+      <fieldset class="control-group">
+        <legend>Select SVG</legend>
+        <input type="file" id="svg-file" accept=".svg" multiple />
+        <div id='drag-target' class="disabled"><p>Drag and Drop File to Load</p></div>
+      </fieldset>
+    </div>
+    <form action="#" class="inputs-form" id="query-form">
+      <fieldset class="control-group">
+        <legend>Node Expression (XPath)</legend>
+        <input type="text" name="node-xpath" value="//svg:g[@class='node']"/>
+      </fieldset>
+      <fieldset class="control-group">
+        <legend>Title Expression (XPath)</legend>
+        <input type="text" name="title-xpath" value="./svg:title/text()" />
+      </fieldset>
+      <fieldset class="control-group">
+        <legend>Submit</legend>
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </form>
+    <details id="node-listing-details" class="hidden">
+      <summary>Node listing</summary>
+      <ul id="node-listing">
+      </ul>
+    </details>
+    <div id="svg-target">
+    </div>
+  </body>
+</html>
